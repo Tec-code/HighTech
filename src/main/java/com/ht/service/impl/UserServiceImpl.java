@@ -1,8 +1,8 @@
-package com.test.service.impl;
+package com.ht.service.impl;
 
-import com.test.service.IUserService;
-import com.test.model.User;
-import com.test.dao.IUserDao;
+import com.ht.service.IUserService;
+import com.ht.model.User;
+import com.ht.dao.IUserDao;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;

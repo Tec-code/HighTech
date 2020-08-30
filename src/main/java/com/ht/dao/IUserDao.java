@@ -1,6 +1,6 @@
-package com.test.dao;
+package com.ht.dao;
 
-import com.test.model.User;
+import com.ht.model.User;
 
 public interface IUserDao {
     User getUserById(int userId);

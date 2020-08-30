@@ -1,8 +1,8 @@
-package com.test.dao.impl;
+package com.ht.dao.impl;
 
-import com.test.model.User;
-import com.test.dao.IUserDao;
-import com.test.dao.mapper.UserMapper;
+import com.ht.model.User;
+import com.ht.dao.IUserDao;
+import com.ht.dao.mapper.UserMapper;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

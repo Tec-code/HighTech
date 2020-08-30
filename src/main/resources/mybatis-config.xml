@@ -3,6 +3,6 @@
 <configuration>
     <mappers>
         <!-- FIXME 配置扫描的Mapper类 -->
-        <package name="com.test.dao.mapper"/>
+        <package name="com.ht.dao.mapper"/>
     </mappers>
 </configuration>

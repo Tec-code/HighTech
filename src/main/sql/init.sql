@@ -1,4 +1,4 @@
--- FIXME demo init script for package com.test
+-- FIXME demo init script for package com.ht
 CREATE DATABASE `test`;
 USE `test`;
 CREATE TABLE `user` (

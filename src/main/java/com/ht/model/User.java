@@ -1,4 +1,4 @@
-package com.test.model;
+package com.ht.model;
 
 public class User {
     private Integer id;

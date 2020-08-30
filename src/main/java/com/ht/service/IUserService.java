@@ -1,6 +1,6 @@
-package com.test.service;
+package com.ht.service;
 
-import com.test.model.User;
+import com.ht.model.User;
 
 public interface IUserService {
     User getUserById(int userId);

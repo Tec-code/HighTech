@@ -14,8 +14,8 @@
 
     <context:annotation-config/>
 
-    <bean id="useDao" class="com.test.dao.impl.UserDaoImpl" />
-    <bean id="userService" class="com.test.service.impl.UserServiceImpl" />
+    <bean id="useDao" class="com.ht.dao.impl.UserDaoImpl" />
+    <bean id="userService" class="com.ht.service.impl.UserServiceImpl" />
 
     <!--  ================================== import sub-config file  ================================== -->
     <import resource="classpath:spring-mybatis.xml" />

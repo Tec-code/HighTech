@@ -1,6 +1,6 @@
-package com.test.dao.mapper;
+package com.ht.dao.mapper;
 
-import com.test.model.User;
+import com.ht.model.User;
 
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
