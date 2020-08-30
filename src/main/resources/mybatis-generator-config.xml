@@ -85,5 +85,12 @@
             <!--是否使用实际列名,默认为false-->
             <!--<property name="useActualColumnNames" value="false" />-->
         </table>
+
+        <table schema="hightech" tableName="ht_enterprise_info" domainObjectName="EnterpriseInfo"
+               enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               enableUpdateByExample="false" selectByExampleQueryId="false">
+            <!--是否使用实际列名,默认为false-->
+            <!--<property name="useActualColumnNames" value="false" />-->
+        </table>
     </context>
 </generatorConfiguration>
