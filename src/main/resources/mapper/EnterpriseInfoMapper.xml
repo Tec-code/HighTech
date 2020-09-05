@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ht.dao.EnterpriseInfoMapper">
+<mapper namespace="com.ht.dao.mapper.EnterpriseInfoMapper">
   <resultMap id="BaseResultMap" type="com.ht.model.EnterpriseInfo">
     <id column="enterprise_id" jdbcType="INTEGER" property="enterpriseId" />
     <result column="enterprise_name" jdbcType="VARCHAR" property="enterpriseName" />

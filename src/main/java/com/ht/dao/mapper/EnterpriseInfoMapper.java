@@ -1,4 +1,4 @@
-package com.ht.dao;
+package com.ht.dao.mapper;
 
 import com.ht.model.EnterpriseInfo;
 // test

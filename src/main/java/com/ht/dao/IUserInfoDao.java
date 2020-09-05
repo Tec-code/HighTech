@@ -1,7 +1,7 @@
-package com.ht.service;
+package com.ht.dao;
 
 import com.ht.model.UserInfo;
 
-public interface IUserService {
+public interface IUserInfoDao {
     UserInfo getUserById(int userId);
 }

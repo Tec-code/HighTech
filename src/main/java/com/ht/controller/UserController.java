@@ -15,9 +15,9 @@ public class UserController {
     @Autowired
     IUserService userService;
 
-    @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{userId}", method = RequestMethod.GET, produces="text/plain;charset=UTF-8")
     @ResponseBody
     public String getUserNameById(@PathVariable int userId) {
-        return userService.getUserById(userId).getUsername();
+        return userService.getUserById(userId).getUserName();
     }
 }
