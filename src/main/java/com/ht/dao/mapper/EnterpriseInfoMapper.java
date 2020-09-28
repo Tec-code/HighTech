@@ -1,7 +1,7 @@
 package com.ht.dao.mapper;
 
 import com.ht.model.EnterpriseInfo;
-// test
+
 public interface EnterpriseInfoMapper {
     int deleteByPrimaryKey(Integer enterpriseId);
 

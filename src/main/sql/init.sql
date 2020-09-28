@@ -6,18 +6,19 @@ CREATE TABLE `ht_user_info` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
   `user_name` varchar(64) NOT NULL COMMENT '姓名',
   `user_no` varchar(16)  NOT NULL COMMENT '电话号码',
-  `user_password` varchar(128)  NOT NULL COMMENT '密码，需要加密存储',
+  `password` varchar(64)  NOT NULL COMMENT '加密后的密码',
+  `salt` varchar(32)  NOT NULL COMMENT '加密盐值',
   `post` varchar(128) DEFAULT NULL COMMENT '职位，主要给操作员使用',
   `role` varchar(128)  NOT NULL COMMENT '用户角色，可能有多角色；SYS_ADMIN：系统管理员；GUEST_MANAGER：客户经理；ENTERPRISE_ADMIN：企业管理员；ENTERPRISE_OPERATOR：企业操作员；ORG_ADMIN:机构管理员',
   `status` varchar(8)  NOT NULL COMMENT '状态，normal：在职，quit：离职，handover：交接',
-  `create_time` datetime NOT NULL COMMENT '创建时间',
-  `update_time` datetime NOT NULL COMMENT '修改时间',
+  `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY (`user_id`),
   KEY `idx_username` (`user_name`),
   KEY `idx_userno` (`user_no`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=gbk;
 
-INSERT INTO `hightech`.`ht_user_info` (`user_id`, `user_name`, `user_no`, `user_password`, `post`, `role`, `status`, `create_time`, `update_time`) VALUES ('1', '贾晓彤', '18992053696', 'Huawei@123', NULL, 'SYS_ADMIN', 'normal', '2020-08-30 20:47:38', '2020-08-30 20:47:40');
+INSERT INTO `hightech`.`ht_user_info` (`user_id`, `user_name`, `user_no`, `password`, `salt`, `post`, `role`, `status`) VALUES ('1', '贾晓彤', '18992053696', '0b66#11aa#afca6#dda#6Fbc2ga0#g20242@0ba!1ba*2d#ba@a0b#540g#*#adf', '841a035a81614177b71194ac8cdf7445', NULL, 'SYS_ADMIN', 'normal');
 
 drop table if exists ht_user_ext_info;
 CREATE TABLE `ht_user_ext_info` (
@@ -26,21 +27,10 @@ CREATE TABLE `ht_user_ext_info` (
   `ext_value` varchar(64)  NOT NULL COMMENT '扩展信息value',
   `is_valid` varchar(1)  NOT NULL COMMENT '是否有效：Y/N',
   `memo` varchar(128)  NOT NULL COMMENT '备注信息',
-  `create_time` datetime NOT NULL COMMENT '创建时间',
-  `update_time` datetime NOT NULL COMMENT '修改时间',
+  `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY (user_id,ext_key)
 ) ENGINE=InnoDB  DEFAULT CHARSET=gbk;
-
-drop table if exists ht_user_verify;
-CREATE TABLE `ht_user_verify` (
-  `user_id` int(11) NOT NULL  COMMENT '用户ID',
-  `verify_code` varchar(16) NOT NULL COMMENT '验证码',
-  `is_valid` varchar(16) NOT NULL COMMENT '是否有效，再次发送需要失效历史数据',
-  `create_time` datetime NOT NULL COMMENT '创建时间',
-  `expire_time` datetime NOT NULL COMMENT '失效时间',
-  KEY (user_id,verify_code)
-) ENGINE=InnoDB  DEFAULT CHARSET=gbk;
-
 
 drop table if exists ht_node_info;
 CREATE TABLE `ht_node_info` (

@@ -9,7 +9,9 @@ public class UserInfo {
 
     private String userNo;
 
-    private String userPassword;
+    private String password;
+
+    private String salt;
 
     private String post;
 
@@ -45,12 +47,20 @@ public class UserInfo {
         this.userNo = userNo == null ? null : userNo.trim();
     }
 
-    public String getUserPassword() {
-        return userPassword;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword == null ? null : userPassword.trim();
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt == null ? null : salt.trim();
     }
 
     public String getPost() {
