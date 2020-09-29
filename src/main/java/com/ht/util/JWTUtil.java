@@ -28,7 +28,6 @@ public class JWTUtil {
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
         //将base64key字符串使用base64解码成字节数组
         byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary(base64key);
-        String s = String.valueOf(apiKeySecretBytes);
         //使用HmacSHA256签名算法生成一个HS256的签名秘钥Key
         Key signingKey = new SecretKeySpec(apiKeySecretBytes, signatureAlgorithm.getJcaName());
 

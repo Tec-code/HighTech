@@ -8,6 +8,7 @@ import com.ht.model.UserInfo;
 import com.ht.service.IUserService;
 import com.ht.util.VerifyCodeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +25,9 @@ import java.util.Map;
 public class UserController {
     private static final String SESSION_VERIFY_CODE_KEY = "verifyCode";
     private static final String SESSION_ERROR_COUNT_KEY = "errCount";
-    private static final int TRY_COUNTS_BEFORE_VCODE = 5;
+
+    @Value("${password.retry.count: 3}")
+    private int TRY_COUNTS_BEFORE_VCODE;
 
     @Autowired
     IUserService userService;
