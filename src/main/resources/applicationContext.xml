@@ -13,8 +13,11 @@
        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">
 
     <context:annotation-config/>
+    <!-- 引入外部properties文件 -->
+    <context:property-placeholder location="classpath:app.properties,classpath:jdbc.properties" />
 
-    <bean id="useDao" class="com.ht.dao.impl.UserDaoImpl" />
+    <bean id="tokenProvider" class="com.ht.common.auth.TokenProvider" />
+    <bean id="userInfoDao" class="com.ht.dao.impl.UserInfoDaoImpl" />
     <bean id="userService" class="com.ht.service.impl.UserServiceImpl" />
 
     <!--  ================================== import sub-config file  ================================== -->

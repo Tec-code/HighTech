@@ -1,7 +1,14 @@
 package com.ht.service;
 
-import com.ht.model.User;
+import com.ht.model.UserInfo;
 
 public interface IUserService {
-    User getUserById(int userId);
+    UserInfo getUserById(int userId);
+
+    UserInfo getUserByUserNo(String userNo);
+
+    boolean registerUser(UserInfo userInfo);
+
+    boolean checkUserPassword(UserInfo userInfo, String password);
+
 }

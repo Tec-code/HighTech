@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ht.dao.UserInfoMapper">
+<mapper namespace="com.ht.dao.mapper.UserInfoMapper">
   <resultMap id="BaseResultMap" type="com.ht.model.UserInfo">
     <id column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="user_no" jdbcType="VARCHAR" property="userNo" />
-    <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="salt" jdbcType="VARCHAR" property="salt" />
     <result column="post" jdbcType="VARCHAR" property="post" />
     <result column="role" jdbcType="VARCHAR" property="role" />
     <result column="status" jdbcType="VARCHAR" property="status" />
@@ -13,10 +14,11 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    user_id, user_name, user_no, user_password, post, role, status, create_time, update_time
+    user_id, user_name, user_no, password, salt, post, role, status, create_time,
+    update_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from ht_user_info
     where user_id = #{userId,jdbcType=INTEGER}
@@ -25,15 +27,19 @@
     delete from ht_user_info
     where user_id = #{userId,jdbcType=INTEGER}
   </delete>
+  <select id="selectByUserNo" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from ht_user_info
+    where user_no = #{userNo,jdbcType=VARCHAR}
+  </select>
   <insert id="insert" parameterType="com.ht.model.UserInfo">
-    insert into ht_user_info (user_id, user_name, user_no, 
-      user_password, post, role, 
-      status, create_time, update_time
-      )
-    values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userNo,jdbcType=VARCHAR}, 
-      #{userPassword,jdbcType=VARCHAR}, #{post,jdbcType=VARCHAR}, #{role,jdbcType=VARCHAR}, 
-      #{status,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
-      )
+    insert into ht_user_info (user_id, user_name, user_no,
+      password, salt, post,
+      role, status)
+    values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userNo,jdbcType=VARCHAR},
+      #{password,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{post,jdbcType=VARCHAR},
+      #{role,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.ht.model.UserInfo">
     insert into ht_user_info
@@ -47,8 +53,11 @@
       <if test="userNo != null">
         user_no,
       </if>
-      <if test="userPassword != null">
-        user_password,
+      <if test="password != null">
+        password,
+      </if>
+      <if test="salt != null">
+        salt,
       </if>
       <if test="post != null">
         post,
@@ -76,8 +85,11 @@
       <if test="userNo != null">
         #{userNo,jdbcType=VARCHAR},
       </if>
-      <if test="userPassword != null">
-        #{userPassword,jdbcType=VARCHAR},
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        #{salt,jdbcType=VARCHAR},
       </if>
       <if test="post != null">
         #{post,jdbcType=VARCHAR},
@@ -105,8 +117,11 @@
       <if test="userNo != null">
         user_no = #{userNo,jdbcType=VARCHAR},
       </if>
-      <if test="userPassword != null">
-        user_password = #{userPassword,jdbcType=VARCHAR},
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        salt = #{salt,jdbcType=VARCHAR},
       </if>
       <if test="post != null">
         post = #{post,jdbcType=VARCHAR},
@@ -130,7 +145,8 @@
     update ht_user_info
     set user_name = #{userName,jdbcType=VARCHAR},
       user_no = #{userNo,jdbcType=VARCHAR},
-      user_password = #{userPassword,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR},
       post = #{post,jdbcType=VARCHAR},
       role = #{role,jdbcType=VARCHAR},
       status = #{status,jdbcType=VARCHAR},

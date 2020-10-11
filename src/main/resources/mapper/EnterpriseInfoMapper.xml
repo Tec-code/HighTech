@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ht.dao.EnterpriseInfoMapper">
+<mapper namespace="com.ht.dao.mapper.EnterpriseInfoMapper">
   <resultMap id="BaseResultMap" type="com.ht.model.EnterpriseInfo">
     <id column="enterprise_id" jdbcType="INTEGER" property="enterpriseId" />
     <result column="enterprise_name" jdbcType="VARCHAR" property="enterpriseName" />
@@ -11,7 +11,7 @@
     enterprise_id, enterprise_name, create_time, update_
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from ht_enterprise_info
     where enterprise_id = #{enterpriseId,jdbcType=INTEGER}
@@ -21,9 +21,9 @@
     where enterprise_id = #{enterpriseId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.ht.model.EnterpriseInfo">
-    insert into ht_enterprise_info (enterprise_id, enterprise_name, create_time, 
+    insert into ht_enterprise_info (enterprise_id, enterprise_name, create_time,
       update_)
-    values (#{enterpriseId,jdbcType=INTEGER}, #{enterpriseName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+    values (#{enterpriseId,jdbcType=INTEGER}, #{enterpriseName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
       #{update,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.ht.model.EnterpriseInfo">

@@ -21,7 +21,6 @@
     <commonsLogging.version>1.2</commonsLogging.version>
   </properties>
 
-
   <dependencies>
     <!-- ********************** Spring ********************** -->
     <dependency>
@@ -76,6 +75,12 @@
       <version>1.9.6</version>
     </dependency>
 
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>4.0.1</version>
+    </dependency>
+
     <!-- ********************** DB Connection ********************** -->
     <dependency>
       <groupId>mysql</groupId>
@@ -98,6 +103,23 @@
       <groupId>org.mybatis</groupId>
       <artifactId>mybatis-spring</artifactId>
       <version>2.0.5</version>
+    </dependency>
+
+    <!-- ********************** jwt依赖包 ********************** -->
+    <dependency>
+      <groupId>com.auth0</groupId>
+      <artifactId>java-jwt</artifactId>
+      <version>3.10.3</version>
+    </dependency>
+    <dependency>
+      <groupId>io.jsonwebtoken</groupId>
+      <artifactId>jjwt</artifactId>
+      <version>0.9.1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.2.73</version>
     </dependency>
 
     <!-- ********************** 其他 ********************** -->
