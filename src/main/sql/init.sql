@@ -4,13 +4,13 @@ USE `hightech`;
 DROP table if exists ht_user_info;
 CREATE TABLE `ht_user_info` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
-  `user_name` varchar(64) NOT NULL COMMENT '姓名',
+  `user_name` varchar(64)  COMMENT '姓名',
   `user_no` varchar(16)  NOT NULL COMMENT '电话号码',
   `password` varchar(64)  NOT NULL COMMENT '加密后的密码',
   `salt` varchar(32)  NOT NULL COMMENT '加密盐值',
   `post` varchar(128) DEFAULT NULL COMMENT '职位，主要给操作员使用',
-  `role` varchar(128)  NOT NULL COMMENT '用户角色，可能有多角色；SYS_ADMIN：系统管理员；GUEST_MANAGER：客户经理；ENTERPRISE_ADMIN：企业管理员；ENTERPRISE_OPERATOR：企业操作员；ORG_ADMIN:机构管理员',
-  `status` varchar(8)  NOT NULL COMMENT '状态，normal：在职，quit：离职，handover：交接',
+  `role` varchar(128)  NOT NULL default 'SYS_ADMIN' COMMENT '用户角色，可能有多角色；SYS_ADMIN：系统管理员；GUEST_MANAGER：客户经理；ENTERPRISE_ADMIN：企业管理员；ENTERPRISE_OPERATOR：企业操作员；ORG_ADMIN:机构管理员',
+  `status` varchar(8)  NOT NULL default 'normal' COMMENT '状态，normal：在职，quit：离职，handover：交接',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   PRIMARY KEY (`user_id`),
@@ -78,6 +78,11 @@ CREATE TABLE `ht_enterprise_info` (
   key (enterprise_name)
 ) ENGINE=InnoDB  DEFAULT CHARSET=gbk;
 
+INSERT INTO `hightech`.`ht_enterprise_info` (`enterprise_id`, `enterprise_name`, `create_time`, `update_`) VALUES ('1', '上海陈楠公司', '2020-10-18 17:29:31', '2020-10-18 17:29:35');
+INSERT INTO `hightech`.`ht_enterprise_info` (`enterprise_id`, `enterprise_name`, `create_time`, `update_`) VALUES ('2', '西安宇星公司', '2020-10-18 17:29:52', '2020-10-18 17:29:55');
+INSERT INTO `hightech`.`ht_enterprise_info` (`enterprise_id`, `enterprise_name`, `create_time`, `update_`) VALUES ('3', '深圳芳草公司', '2020-10-18 17:30:21', '2020-10-18 17:30:24');
+
+
 
 drop table if exists ht_enterprise_user_rela;
 CREATE TABLE `ht_enterprise_user_rela` (
@@ -90,3 +95,6 @@ CREATE TABLE `ht_enterprise_user_rela` (
   `update_` datetime NOT NULL COMMENT '修改时间',
   PRIMARY KEY (enterprise_id,user_id)
 ) ENGINE=InnoDB  DEFAULT CHARSET=gbk;
+
+
+
