@@ -18,6 +18,13 @@ public enum ResCode {
     VERIFY_CODE_ERROR(400002, "验证码错误"),
     VERIFY_CODE_REQUIRED(400002, "请输入验证码"),
     USERNO_PASSWORD_ERROR(400003, "用户名或密码错误"),
+
+
+    // 企业查询相关
+
+
+
+    // 研发项目
     ;
 
 

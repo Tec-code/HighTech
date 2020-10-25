@@ -14,32 +14,33 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    user_id, user_name, user_no, password, salt, post, role, status, create_time,
-    update_time
+    user_id, user_name, user_no, password, salt, post, role, status, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select
+    select 
     <include refid="Base_Column_List" />
     from ht_user_info
     where user_id = #{userId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from ht_user_info
-    where user_id = #{userId,jdbcType=INTEGER}
-  </delete>
   <select id="selectByUserNo" parameterType="java.lang.String" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from ht_user_info
     where user_no = #{userNo,jdbcType=VARCHAR}
   </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ht_user_info
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
   <insert id="insert" parameterType="com.ht.model.UserInfo">
-    insert into ht_user_info (user_id, user_name, user_no,
-      password, salt, post,
-      role, status)
-    values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userNo,jdbcType=VARCHAR},
-      #{password,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{post,jdbcType=VARCHAR},
-      #{role,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR})
+    insert into ht_user_info (user_id, user_name, user_no, 
+      password, salt, post, 
+      role, status, create_time, 
+      update_time)
+    values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userNo,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{post,jdbcType=VARCHAR}, 
+      #{role,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.ht.model.UserInfo">
     insert into ht_user_info

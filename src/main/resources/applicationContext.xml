@@ -18,7 +18,11 @@
 
     <bean id="tokenProvider" class="com.ht.common.auth.TokenProvider" />
     <bean id="userInfoDao" class="com.ht.dao.impl.UserInfoDaoImpl" />
+    <bean id="enterpriseDao" class="com.ht.dao.impl.EnterpriseDaoImpl" />
+    <bean id="enterpriseUserRelaDao" class="com.ht.dao.impl.EnterpriseUserRelaDaoImpl" />
+
     <bean id="userService" class="com.ht.service.impl.UserServiceImpl" />
+    <bean id="enterpriseService" class="com.ht.service.impl.EnterpriseServiceImpl" />
 
     <!--  ================================== import sub-config file  ================================== -->
     <import resource="classpath:spring-mybatis.xml" />

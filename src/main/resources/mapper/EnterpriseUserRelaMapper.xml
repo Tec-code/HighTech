@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ht.dao.mapper.EnterpriseUserRelaMapper">
+  <resultMap id="BaseResultMap" type="com.ht.model.EnterpriseUserRela">
+    <id column="enterprise_id" jdbcType="INTEGER" property="enterpriseId" />
+    <id column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="rela_type" jdbcType="VARCHAR" property="relaType" />
+    <result column="rela_status" jdbcType="VARCHAR" property="relaStatus" />
+    <result column="rela_user_id" jdbcType="INTEGER" property="relaUserId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_" jdbcType="TIMESTAMP" property="update" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    enterprise_id, user_id, rela_type, rela_status, rela_user_id, create_time, update_
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ht_enterprise_user_rela
+    where enterprise_id = #{enterpriseId,jdbcType=INTEGER}
+      and user_id = #{userId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from ht_enterprise_user_rela
+    where enterprise_id = #{enterpriseId,jdbcType=INTEGER}
+      and user_id = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ht.model.EnterpriseUserRela">
+    insert into ht_enterprise_user_rela (enterprise_id, user_id, rela_type, 
+      rela_status, rela_user_id, create_time, 
+      update_)
+    values (#{enterpriseId,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{relaType,jdbcType=VARCHAR}, 
+      #{relaStatus,jdbcType=VARCHAR}, #{relaUserId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{update,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ht.model.EnterpriseUserRela">
+    insert into ht_enterprise_user_rela
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="enterpriseId != null">
+        enterprise_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="relaType != null">
+        rela_type,
+      </if>
+      <if test="relaStatus != null">
+        rela_status,
+      </if>
+      <if test="relaUserId != null">
+        rela_user_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="update != null">
+        update_,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="enterpriseId != null">
+        #{enterpriseId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="relaType != null">
+        #{relaType,jdbcType=VARCHAR},
+      </if>
+      <if test="relaStatus != null">
+        #{relaStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="relaUserId != null">
+        #{relaUserId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update != null">
+        #{update,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ht.model.EnterpriseUserRela">
+    update ht_enterprise_user_rela
+    <set>
+      <if test="relaType != null">
+        rela_type = #{relaType,jdbcType=VARCHAR},
+      </if>
+      <if test="relaStatus != null">
+        rela_status = #{relaStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="relaUserId != null">
+        rela_user_id = #{relaUserId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="update != null">
+        update_ = #{update,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where enterprise_id = #{enterpriseId,jdbcType=INTEGER}
+      and user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ht.model.EnterpriseUserRela">
+    update ht_enterprise_user_rela
+    set rela_type = #{relaType,jdbcType=VARCHAR},
+      rela_status = #{relaStatus,jdbcType=VARCHAR},
+      rela_user_id = #{relaUserId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_ = #{update,jdbcType=TIMESTAMP}
+    where enterprise_id = #{enterpriseId,jdbcType=INTEGER}
+      and user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+</mapper>
