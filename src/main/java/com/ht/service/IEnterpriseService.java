@@ -2,8 +2,11 @@ package com.ht.service;
 
 import com.ht.model.EnterpriseInfo;
 
+import java.util.List;
+
 public interface IEnterpriseService {
 
-    EnterpriseInfo GetEnterpriseList(String userId);
-    int CreateEnterprise(String userId,EnterpriseInfo enterpriseInfo);
+    List<EnterpriseInfo> GetEnterpriseList(int userId, String enterpriseName);
+
+    int CreateEnterprise(int userId, EnterpriseInfo enterpriseInfo);
 }

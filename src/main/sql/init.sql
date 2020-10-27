@@ -50,7 +50,7 @@ CREATE TABLE `ht_node_info` (
 drop table if exists ht_node_user_rela;
 CREATE TABLE `ht_node_user_rela` (
   `node_id` int(11) NOT NULL COMMENT '组织节点ID',
-  `user_id` varchar(128) NOT NULL COMMENT '用户ID',
+  `user_id` int(11) NOT NULL COMMENT '用户ID',
   `is_manager` varchar(1) NOT NULL  COMMENT '是否为管理员：Y/N',
   `create_time` datetime NOT NULL COMMENT '创建时间',
   `update_` datetime NOT NULL COMMENT '修改时间',
@@ -87,7 +87,7 @@ INSERT INTO `hightech`.`ht_enterprise_info` (`enterprise_id`, `enterprise_name`,
 drop table if exists ht_enterprise_user_rela;
 CREATE TABLE `ht_enterprise_user_rela` (
   `enterprise_id` int(11) NOT NULL COMMENT '企业ID',
-  `user_id` varchar(128) NOT NULL COMMENT '用户ID',
+  `user_id` int(11) NOT NULL COMMENT '用户ID',
   `rela_type` varchar(16) NOT NULL  COMMENT 'GUEST_MANAGER：客户经理；ENTERPRISE_ADMIN：企业管理员；ENTERPRISE_OPERATOR：企业操作员',
   `rela_status`  varchar(16) NOT NULL  COMMENT 'normal：在职，handover：交接中',
   `rela_user_id` int(11) comment '交接对象',

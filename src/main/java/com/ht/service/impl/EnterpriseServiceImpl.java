@@ -2,6 +2,7 @@ package com.ht.service.impl;
 
 import com.ht.constants.EnterpriseUserRelaType;
 import com.ht.dao.IEnterpriseDao;
+import com.ht.dao.IEnterpriseDealDao;
 import com.ht.dao.IEnterpriseUserRelaDao;
 import com.ht.model.EnterpriseInfo;
 import com.ht.model.EnterpriseUserRela;
@@ -11,6 +12,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
+import java.util.List;
 
 public class EnterpriseServiceImpl implements IEnterpriseService {
 
@@ -22,8 +24,11 @@ public class EnterpriseServiceImpl implements IEnterpriseService {
     @Autowired
     IEnterpriseUserRelaDao enterpriseUserRelaDao;
 
+    @Autowired
+    IEnterpriseDealDao enterpriseDealDao;
+
     @Override
-    public int CreateEnterprise(String userId, EnterpriseInfo enterpriseInfo) {
+    public int CreateEnterprise(int userId, EnterpriseInfo enterpriseInfo) {
 
         Date now = new Date();
         enterpriseInfo.setCreateTime(now);
@@ -51,7 +56,7 @@ public class EnterpriseServiceImpl implements IEnterpriseService {
     }
 
     @Override
-    public EnterpriseInfo GetEnterpriseList(String userId) {
-        return null;
+    public List<EnterpriseInfo> GetEnterpriseList(int userId, String enterpriseName) {
+        return enterpriseDealDao.getEnterpriseListByEnterpriseName(userId, enterpriseName);
     }
 }
