@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 
@@ -26,37 +27,34 @@ public class EnterpriseController {
     public JSONObject addEnterprise(@RequestBody Map<String, String> map) {
 
         String enterpriseName = map.get("enterpriseName");
-        String userId = map.get("userId");
+        int userId = Integer.valueOf(map.get("userId"));
 
-        if(StringUtils.isEmpty(userId) || StringUtils.isEmpty(enterpriseName) ){
+        if (userId == 0 || StringUtils.isEmpty(enterpriseName)) {
             return new JsonResponse(ResCode.REQUEST_ERROR).toJSON();
         }
 
         EnterpriseInfo enterpriseInfo = new EnterpriseInfo();
         enterpriseInfo.setEnterpriseName(enterpriseName);
-        int enterpriseId = enterpriseService.CreateEnterprise(userId,enterpriseInfo);
+        int enterpriseId = enterpriseService.CreateEnterprise(userId, enterpriseInfo);
         JsonResponse resp = new JsonResponse(ResCode.OK);
         resp.addData("enterpriseId", enterpriseId);
         return resp.toJSON();
-
-
 
 
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public JSONObject getEnterpriseListByUser(@PathVariable String userId, @PathVariable String enterpriseName) {
-        if(StringUtils.isEmpty(userId)){
+    public JSONObject getEnterpriseListByUser(@PathVariable Integer userId, @PathVariable String enterpriseName) {
+        if (userId == 0) {
             return new JsonResponse(ResCode.REQUEST_ERROR).toJSON();
         }
 
-        String token = "";
+        List<EnterpriseInfo> enterpriseInfoLit = enterpriseService.GetEnterpriseList(userId,enterpriseName);
+
         JsonResponse resp = new JsonResponse(ResCode.OK);
-        resp.addData("token", token);
+        resp.addData("enterpriseInfoLit", enterpriseInfoLit);
         return resp.toJSON();
-
-
 
 
     }

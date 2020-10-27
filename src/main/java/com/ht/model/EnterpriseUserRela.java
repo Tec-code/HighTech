@@ -5,7 +5,7 @@ import java.util.Date;
 public class EnterpriseUserRela {
     private Integer enterpriseId;
 
-    private String userId;
+    private Integer userId;
 
     private String relaType;
 
@@ -25,12 +25,12 @@ public class EnterpriseUserRela {
         this.enterpriseId = enterpriseId;
     }
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId == null ? null : userId.trim();
+    public void setUserId(int userId) {
+        this.userId = userId ;
     }
 
     public String getRelaType() {
