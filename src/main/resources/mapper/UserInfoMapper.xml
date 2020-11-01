@@ -28,6 +28,7 @@
     from ht_user_info
     where user_no = #{userNo,jdbcType=VARCHAR}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from ht_user_info
     where user_id = #{userId,jdbcType=INTEGER}
