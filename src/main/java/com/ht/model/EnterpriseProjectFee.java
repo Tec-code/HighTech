@@ -1,5 +1,7 @@
 package com.ht.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class EnterpriseProjectFee {
@@ -17,6 +19,7 @@ public class EnterpriseProjectFee {
 
     private Integer amount;
 
+    @JsonFormat(pattern="yyyy/MM/dd HH:mm:ss")
     private Date createTime;
 
     private String status;

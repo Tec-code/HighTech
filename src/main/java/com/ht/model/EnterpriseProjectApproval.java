@@ -1,5 +1,7 @@
 package com.ht.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class EnterpriseProjectApproval {
@@ -9,10 +11,13 @@ public class EnterpriseProjectApproval {
 
     private String applyUserName;
 
+    @JsonFormat(pattern="yyyy/MM/dd HH:mm:ss")
     private Date applyTime;
 
+    @JsonFormat(pattern="yyyy/MM/dd HH:mm:ss")
     private Date startTime;
 
+    @JsonFormat(pattern="yyyy/MM/dd HH:mm:ss")
     private Date finishTime;
 
     private Integer finGoal;
@@ -25,8 +30,10 @@ public class EnterpriseProjectApproval {
 
     private Integer resolutionFileId;
 
+    @JsonFormat(pattern="yyyy/MM/dd HH:mm:ss")
     private Date createTime;
 
+    @JsonFormat(pattern="yyyy/MM/dd HH:mm:ss")
     private Date updateTime;
 
     public String getProjectId() {

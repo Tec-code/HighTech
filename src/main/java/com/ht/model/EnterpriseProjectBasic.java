@@ -1,5 +1,7 @@
 package com.ht.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class EnterpriseProjectBasic {
@@ -19,8 +21,10 @@ public class EnterpriseProjectBasic {
 
     private Integer govCostBudget;
 
+    @JsonFormat(pattern="yyyy/MM/dd HH:mm:ss")
     private Date createTime;
 
+    @JsonFormat(pattern="yyyy/MM/dd HH:mm:ss")
     private Date updateTime;
 
     public String getProjectId() {

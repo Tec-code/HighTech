@@ -1,5 +1,7 @@
 package com.ht.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class UserInfo {
@@ -19,8 +21,10 @@ public class UserInfo {
 
     private String status;
 
+    @JsonFormat(pattern="yyyy/MM/dd HH:mm:ss")
     private Date createTime;
 
+    @JsonFormat(pattern="yyyy/MM/dd HH:mm:ss")
     private Date updateTime;
 
     public Integer getUserId() {

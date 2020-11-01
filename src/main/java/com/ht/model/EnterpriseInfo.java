@@ -1,5 +1,7 @@
 package com.ht.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class EnterpriseInfo {
@@ -7,8 +9,10 @@ public class EnterpriseInfo {
 
     private String enterpriseName;
 
+    @JsonFormat(pattern="yyyy/MM/dd HH:mm:ss")
     private Date createTime;
 
+    @JsonFormat(pattern="yyyy/MM/dd HH:mm:ss")
     private Date update;
 
     public Integer getEnterpriseId() {

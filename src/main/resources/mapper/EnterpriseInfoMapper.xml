@@ -79,4 +79,33 @@
       update_ = #{update,jdbcType=TIMESTAMP}
     where enterprise_id = #{enterpriseId,jdbcType=INTEGER}
   </update>
+
+  <select id="getEnterpriseListByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from ht_enterprise_info a ,ht_enterprise_user_rela b
+    on a.enterprise_id=b.enterprise_id
+    where b.user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <select id="getEnterpriseListByEnterpriseInfo" parameterType="map"
+          resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from ht_enterprise_info a ,ht_enterprise_user_rela b
+    on a.enterprise_id=b.enterprise_id
+    where b.user_id = #{userId,jdbcType=INTEGER}
+    <if test="enterpriseName != null">
+      and a.enterprise_name like concat('%',#{enterpriseName,jdbcType=VARCHAR},'%')
+    </if>
+    ;
+  </select>
+
+  <select id="selectExactEnterpriseName" parameterType="java.lang.String"  resultType="java.lang.Integer">
+    select
+    count(*)
+    from ht_enterprise_info a
+    where enterprise_name = #{enterpriseName,jdbcType=VARCHAR}
+    ;
+  </select>
+
 </mapper>

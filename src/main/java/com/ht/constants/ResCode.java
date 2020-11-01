@@ -21,6 +21,7 @@ public enum ResCode {
 
 
     // 企业查询相关
+    ENTERPRISENAME_EXISTS(500000, "企业名称已存在"),
 
 
 
