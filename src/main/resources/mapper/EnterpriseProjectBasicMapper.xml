@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ht.dao.mapper.EnterpriseProjectBasicMapper">
+  <resultMap id="BaseResultMap" type="com.ht.model.EnterpriseProjectBasic">
+    <id column="project_id" jdbcType="VARCHAR" property="projectId" />
+    <result column="enterprise_id" jdbcType="INTEGER" property="enterpriseId" />
+    <result column="project_source" jdbcType="INTEGER" property="projectSource" />
+    <result column="total_income" jdbcType="INTEGER" property="totalIncome" />
+    <result column="project_research_type" jdbcType="VARCHAR" property="projectResearchType" />
+    <result column="tech_field" jdbcType="INTEGER" property="techField" />
+    <result column="total_cost_budget" jdbcType="INTEGER" property="totalCostBudget" />
+    <result column="gov_cost_budget" jdbcType="INTEGER" property="govCostBudget" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    project_id, enterprise_id, project_source, total_income, project_research_type, tech_field, 
+    total_cost_budget, gov_cost_budget, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ht_enterprise_project_basic
+    where project_id = #{projectId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from ht_enterprise_project_basic
+    where project_id = #{projectId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ht.model.EnterpriseProjectBasic">
+    insert into ht_enterprise_project_basic (project_id, enterprise_id, project_source, 
+      total_income, project_research_type, tech_field, 
+      total_cost_budget, gov_cost_budget, create_time, 
+      update_time)
+    values (#{projectId,jdbcType=VARCHAR}, #{enterpriseId,jdbcType=INTEGER}, #{projectSource,jdbcType=INTEGER}, 
+      #{totalIncome,jdbcType=INTEGER}, #{projectResearchType,jdbcType=VARCHAR}, #{techField,jdbcType=INTEGER}, 
+      #{totalCostBudget,jdbcType=INTEGER}, #{govCostBudget,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ht.model.EnterpriseProjectBasic">
+    insert into ht_enterprise_project_basic
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="projectId != null">
+        project_id,
+      </if>
+      <if test="enterpriseId != null">
+        enterprise_id,
+      </if>
+      <if test="projectSource != null">
+        project_source,
+      </if>
+      <if test="totalIncome != null">
+        total_income,
+      </if>
+      <if test="projectResearchType != null">
+        project_research_type,
+      </if>
+      <if test="techField != null">
+        tech_field,
+      </if>
+      <if test="totalCostBudget != null">
+        total_cost_budget,
+      </if>
+      <if test="govCostBudget != null">
+        gov_cost_budget,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="projectId != null">
+        #{projectId,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseId != null">
+        #{enterpriseId,jdbcType=INTEGER},
+      </if>
+      <if test="projectSource != null">
+        #{projectSource,jdbcType=INTEGER},
+      </if>
+      <if test="totalIncome != null">
+        #{totalIncome,jdbcType=INTEGER},
+      </if>
+      <if test="projectResearchType != null">
+        #{projectResearchType,jdbcType=VARCHAR},
+      </if>
+      <if test="techField != null">
+        #{techField,jdbcType=INTEGER},
+      </if>
+      <if test="totalCostBudget != null">
+        #{totalCostBudget,jdbcType=INTEGER},
+      </if>
+      <if test="govCostBudget != null">
+        #{govCostBudget,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ht.model.EnterpriseProjectBasic">
+    update ht_enterprise_project_basic
+    <set>
+      <if test="enterpriseId != null">
+        enterprise_id = #{enterpriseId,jdbcType=INTEGER},
+      </if>
+      <if test="projectSource != null">
+        project_source = #{projectSource,jdbcType=INTEGER},
+      </if>
+      <if test="totalIncome != null">
+        total_income = #{totalIncome,jdbcType=INTEGER},
+      </if>
+      <if test="projectResearchType != null">
+        project_research_type = #{projectResearchType,jdbcType=VARCHAR},
+      </if>
+      <if test="techField != null">
+        tech_field = #{techField,jdbcType=INTEGER},
+      </if>
+      <if test="totalCostBudget != null">
+        total_cost_budget = #{totalCostBudget,jdbcType=INTEGER},
+      </if>
+      <if test="govCostBudget != null">
+        gov_cost_budget = #{govCostBudget,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where project_id = #{projectId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ht.model.EnterpriseProjectBasic">
+    update ht_enterprise_project_basic
+    set enterprise_id = #{enterpriseId,jdbcType=INTEGER},
+      project_source = #{projectSource,jdbcType=INTEGER},
+      total_income = #{totalIncome,jdbcType=INTEGER},
+      project_research_type = #{projectResearchType,jdbcType=VARCHAR},
+      tech_field = #{techField,jdbcType=INTEGER},
+      total_cost_budget = #{totalCostBudget,jdbcType=INTEGER},
+      gov_cost_budget = #{govCostBudget,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where project_id = #{projectId,jdbcType=VARCHAR}
+  </update>
+</mapper>

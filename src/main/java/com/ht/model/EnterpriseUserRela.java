@@ -25,12 +25,12 @@ public class EnterpriseUserRela {
         this.enterpriseId = enterpriseId;
     }
 
-    public int getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId ;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getRelaType() {

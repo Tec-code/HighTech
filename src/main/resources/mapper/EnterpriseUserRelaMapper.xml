@@ -3,7 +3,7 @@
 <mapper namespace="com.ht.dao.mapper.EnterpriseUserRelaMapper">
   <resultMap id="BaseResultMap" type="com.ht.model.EnterpriseUserRela">
     <id column="enterprise_id" jdbcType="INTEGER" property="enterpriseId" />
-    <id column="user_id" jdbcType="VARCHAR" property="userId" />
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="rela_type" jdbcType="VARCHAR" property="relaType" />
     <result column="rela_status" jdbcType="VARCHAR" property="relaStatus" />
     <result column="rela_user_id" jdbcType="INTEGER" property="relaUserId" />
@@ -18,18 +18,18 @@
     <include refid="Base_Column_List" />
     from ht_enterprise_user_rela
     where enterprise_id = #{enterpriseId,jdbcType=INTEGER}
-      and user_id = #{userId,jdbcType=VARCHAR}
+      and user_id = #{userId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="map">
     delete from ht_enterprise_user_rela
     where enterprise_id = #{enterpriseId,jdbcType=INTEGER}
-      and user_id = #{userId,jdbcType=VARCHAR}
+      and user_id = #{userId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.ht.model.EnterpriseUserRela">
     insert into ht_enterprise_user_rela (enterprise_id, user_id, rela_type, 
       rela_status, rela_user_id, create_time, 
       update_)
-    values (#{enterpriseId,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{relaType,jdbcType=VARCHAR}, 
+    values (#{enterpriseId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{relaType,jdbcType=VARCHAR}, 
       #{relaStatus,jdbcType=VARCHAR}, #{relaUserId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
       #{update,jdbcType=TIMESTAMP})
   </insert>
@@ -63,7 +63,7 @@
         #{enterpriseId,jdbcType=INTEGER},
       </if>
       <if test="userId != null">
-        #{userId,jdbcType=VARCHAR},
+        #{userId,jdbcType=INTEGER},
       </if>
       <if test="relaType != null">
         #{relaType,jdbcType=VARCHAR},
@@ -102,7 +102,7 @@
       </if>
     </set>
     where enterprise_id = #{enterpriseId,jdbcType=INTEGER}
-      and user_id = #{userId,jdbcType=VARCHAR}
+      and user_id = #{userId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.ht.model.EnterpriseUserRela">
     update ht_enterprise_user_rela
@@ -112,6 +112,6 @@
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_ = #{update,jdbcType=TIMESTAMP}
     where enterprise_id = #{enterpriseId,jdbcType=INTEGER}
-      and user_id = #{userId,jdbcType=VARCHAR}
+      and user_id = #{userId,jdbcType=INTEGER}
   </update>
 </mapper>
