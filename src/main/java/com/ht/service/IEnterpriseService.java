@@ -10,6 +10,8 @@ public interface IEnterpriseService {
 
     int CreateEnterprise(int userId, EnterpriseInfo enterpriseInfo);
 
+    EnterpriseInfo getEnterpriseById(int enterpriseId);
+
     boolean checkEnterpriseNameExist(String enterpriseName);
 
 }
