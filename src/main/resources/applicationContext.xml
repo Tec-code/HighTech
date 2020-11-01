@@ -20,10 +20,11 @@
     <bean id="userInfoDao" class="com.ht.dao.impl.UserInfoDaoImpl" />
     <bean id="enterpriseDao" class="com.ht.dao.impl.EnterpriseDaoImpl" />
     <bean id="enterpriseUserRelaDao" class="com.ht.dao.impl.EnterpriseUserRelaDaoImpl" />
-    <bean id="enterpriseDealDao" class="com.ht.dao.impl.EnterpriseDealImpl" />
+    <bean id="projectDao" class="com.ht.dao.impl.ProjectDaoImpl" />
 
     <bean id="userService" class="com.ht.service.impl.UserServiceImpl" />
     <bean id="enterpriseService" class="com.ht.service.impl.EnterpriseServiceImpl" />
+    <bean id="projectService" class="com.ht.service.impl.ProjectServiceImpl" />
 
     <!--  ================================== import sub-config file  ================================== -->
     <import resource="classpath:spring-mybatis.xml" />

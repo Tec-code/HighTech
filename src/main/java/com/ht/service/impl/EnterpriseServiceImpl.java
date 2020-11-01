@@ -2,7 +2,6 @@ package com.ht.service.impl;
 
 import com.ht.constants.EnterpriseUserRelaType;
 import com.ht.dao.IEnterpriseDao;
-import com.ht.dao.IEnterpriseDealDao;
 import com.ht.dao.IEnterpriseUserRelaDao;
 import com.ht.model.EnterpriseInfo;
 import com.ht.model.EnterpriseUserRela;
@@ -24,8 +23,6 @@ public class EnterpriseServiceImpl implements IEnterpriseService {
     @Autowired
     IEnterpriseUserRelaDao enterpriseUserRelaDao;
 
-    @Autowired
-    IEnterpriseDealDao enterpriseDealDao;
 
     @Override
     public int CreateEnterprise(int userId, EnterpriseInfo enterpriseInfo) {
@@ -34,6 +31,10 @@ public class EnterpriseServiceImpl implements IEnterpriseService {
         enterpriseInfo.setCreateTime(now);
         enterpriseInfo.setUpdate(now);
         // todo 需要校验企业名称重复
+
+        if (enterpriseDao.checkEnterpriseNameExists(enterpriseInfo.getEnterpriseName()) != 0) {
+            return -1;
+        }
 
         try {
             enterpriseDao.insertEnterprise(enterpriseInfo);
@@ -51,12 +52,17 @@ public class EnterpriseServiceImpl implements IEnterpriseService {
             return enterpriseInfo.getEnterpriseId();
         } catch (Exception e) {
             logger.error(e);
-            return -1;
+            return -2;
         }
     }
 
     @Override
     public List<EnterpriseInfo> GetEnterpriseList(int userId, String enterpriseName) {
-        return enterpriseDealDao.getEnterpriseListByEnterpriseName(userId, enterpriseName);
+        return enterpriseDao.getEnterpriseListByEnterpriseName(userId, enterpriseName);
+    }
+
+    @Override
+    public boolean checkEnterpriseNameExist(String enterpriseName) {
+        return enterpriseDao.checkEnterpriseNameExists(enterpriseName) == 0 ? true : false;
     }
 }

@@ -138,11 +138,11 @@ create table ht_enterprise_project_basic
 (
     project_id            varchar(20) NOT NULL COMMENT '项目ID',
     enterprise_id         int(11)     NOT NULL COMMENT '企业ID',
-    project_source        int(4)      not null comment '项目类型 1：本企业自选项目；2 政府部门科技项目；3 其他企业（单位）委托研发；4 境外项目；5 其他项目',
-    total_income          int(11)     not null comment '收入总额：单位万元',
-    project_research_type varchar(24) not null comment '研发类型：',
-    tech_field            int(1)      not null comment '技术领域',
-    total_cost_budget     int(11)     not null comment '研发项目预算，单位：万元',
+    project_source        int(4)       comment '项目类型 1：本企业自选项目；2 政府部门科技项目；3 其他企业（单位）委托研发；4 境外项目；5 其他项目',
+    total_income          int(11)      comment '收入总额：单位万元',
+    project_research_type varchar(24)  comment '研发类型：',
+    tech_field            int(1)       comment '技术领域',
+    total_cost_budget     int(11)      comment '研发项目预算，单位：万元',
     gov_cost_budget       int(11)     null default 0 comment '政府预算',
     create_time           datetime    NOT NULL COMMENT '创建时间',
     update_time           datetime    NOT NULL COMMENT '修改时间',
@@ -155,15 +155,15 @@ create table ht_enterprise_project_approval
 (
     project_id         varchar(20)   NOT NULL COMMENT '项目ID',
     enterprise_id      int(11)       NOT NULL COMMENT '企业ID',
-    apply_user_name    varchar(64)   not null comment '申请人',
-    apply_time         datetime      NOT NULL COMMENT '申请时间',
-    start_time         datetime      NOT NULL COMMENT '开始时间',
-    finish_time        datetime      NOT NULL COMMENT '结束时间',
+    apply_user_name    varchar(64)    comment '申请人',
+    apply_time         datetime       COMMENT '申请时间',
+    start_time         datetime       COMMENT '开始时间',
+    finish_time        datetime       COMMENT '结束时间',
     fin_goal           int(4) comment '主要经济目标',
-    research_info      varchar(2048) not null comment '主要研究内容',
-    expect_target      varchar(2048) not null comment '项目预期目标',
-    plan_file_id       int(11)       not null comment '计划书文件ID',
-    resolution_file_id int(11)       not null comment '立项书文件ID',
+    research_info      varchar(2048)  comment '主要研究内容',
+    expect_target      varchar(2048)  comment '项目预期目标',
+    plan_file_id       int(11)        comment '计划书文件ID',
+    resolution_file_id int(11)        comment '立项书文件ID',
     create_time        datetime      NOT NULL COMMENT '创建时间',
     update_time        datetime      NOT NULL COMMENT '修改时间',
     PRIMARY KEY (project_id),
@@ -182,6 +182,20 @@ create table ht_enterprise_project_fee
     amount        int(11)      not null comment '金额',
     create_time   datetime     NOT NULL COMMENT '创建时间',
     status        varchar(12)  not null comment '状态：confirm，init',
-        PRIMARY KEY (project_id,fee_type,month_id),
+    KEY (project_id,fee_type,month_id),
     key (cert_id)
 );
+
+insert into ht_enterprise_project_fee values (1,'100','people','202011','202011-1','工资',100,now(),'confirm');
+insert into ht_enterprise_project_fee values (1,'100','people','202011','202011-2','工资',100,now(),'confirm');
+insert into ht_enterprise_project_fee values (1,'100','people','202011','202011-3','工资',100,now(),'confirm');
+insert into ht_enterprise_project_fee values (1,'100','people','202011','202011-4','工资',100,now(),'confirm');
+insert into ht_enterprise_project_fee values (1,'100','people','202011','202011-5','工资',100,now(),'confirm');
+insert into ht_enterprise_project_fee values (1,'100','people','202011','202011-6','工资',100,now(),'confirm');
+insert into ht_enterprise_project_fee values (1,'100','people','202011','202011-7','工资',100,now(),'confirm');
+insert into ht_enterprise_project_fee values (1,'100','people','202011','202011-8','工资',100,now(),'confirm');
+insert into ht_enterprise_project_fee values (1,'100','people','202011','202011-9','工资',100,now(),'confirm');
+insert into ht_enterprise_project_fee values (1,'100','people','202011','202011-10','工资',100,now(),'confirm');
+insert into ht_enterprise_project_fee values (1,'100','people','202011','202011-11','工资',100,now(),'confirm');
+insert into ht_enterprise_project_fee values (1,'100','people','202011','202011-12','工资',100,now(),'confirm');
+insert into ht_enterprise_project_fee values (1,'100','people','202011','202011-13','工资',100,now(),'confirm');

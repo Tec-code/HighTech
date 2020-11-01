@@ -33,6 +33,10 @@ public class EnterpriseController {
             return new JsonResponse(ResCode.REQUEST_ERROR).toJSON();
         }
 
+        if(enterpriseService.checkEnterpriseNameExist(enterpriseName)){
+            return new JsonResponse(ResCode.ENTERPRISENAME_EXISTS).toJSON();
+        }
+
         EnterpriseInfo enterpriseInfo = new EnterpriseInfo();
         enterpriseInfo.setEnterpriseName(enterpriseName);
         int enterpriseId = enterpriseService.CreateEnterprise(userId, enterpriseInfo);
