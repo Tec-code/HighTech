@@ -103,4 +103,11 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where project_id = #{projectId,jdbcType=VARCHAR}
   </update>
+
+  <select id="selectByProjectName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from ht_enterprise_project
+    where project_name like concat('%',#{projectName,jdbcType=VARCHAR},'%')
+  </select>
 </mapper>

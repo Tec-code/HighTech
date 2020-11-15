@@ -22,10 +22,15 @@ public enum ResCode {
 
     // 企业查询相关
     ENTERPRISENAME_EXISTS(500000, "企业名称已存在"),
-
-
+    ENTERPRISE_NOT_EXIST(500000, "该企业不存在"),
+    ENTERPRISE_ID_NULL(500001,"企业ID为空"),
 
     // 研发项目
+    PROJECT_ID_NULL(600000,"项目ID为空"),
+    PROJECT_ID_FORMAT_NOT_MATCH(600001,"项目ID格式不符合"),
+    PROJECT_ID_NOT_EXIST(600002,"项目ID不存在"),
+    PROJECT_NAME_NULL(600003,"项目名称为空"),
+
     ;
 
 

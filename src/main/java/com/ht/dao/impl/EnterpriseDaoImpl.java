@@ -7,9 +7,12 @@ import com.ht.model.EnterpriseInfo;
 import java.util.List;
 
 public class EnterpriseDaoImpl extends BaseDao implements IEnterpriseDao {
+
+
     @Override
     public int insertEnterprise(EnterpriseInfo enterpriseInfo) {
         EnterpriseInfoMapper mapper = sqlSession.getMapper(EnterpriseInfoMapper.class);
+
         return mapper.insert(enterpriseInfo);
     }
 
@@ -32,4 +35,13 @@ public class EnterpriseDaoImpl extends BaseDao implements IEnterpriseDao {
 
         return mapper.selectExactEnterpriseName(enterpriseName);
     }
+
+    @Override
+    public EnterpriseInfo getEnterpriseById(int enterpriseId) {
+        EnterpriseInfoMapper mapper = sqlSession.getMapper(EnterpriseInfoMapper.class);
+
+        return mapper.selectByPrimaryKey(enterpriseId);
+    }
+
+
 }

@@ -2,6 +2,8 @@ package com.ht.dao.mapper;
 
 import com.ht.model.EnterpriseProject;
 
+import java.util.List;
+
 public interface EnterpriseProjectMapper {
     int deleteByPrimaryKey(String projectId);
 
@@ -14,4 +16,6 @@ public interface EnterpriseProjectMapper {
     int updateByPrimaryKeySelective(EnterpriseProject record);
 
     int updateByPrimaryKey(EnterpriseProject record);
+
+    List<EnterpriseProject> selectByProjectName(String projectName);
 }

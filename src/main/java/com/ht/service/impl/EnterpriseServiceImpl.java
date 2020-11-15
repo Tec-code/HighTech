@@ -57,6 +57,11 @@ public class EnterpriseServiceImpl implements IEnterpriseService {
     }
 
     @Override
+    public EnterpriseInfo getEnterpriseById(int enterpriseId) {
+        return enterpriseDao.getEnterpriseById(enterpriseId);
+    }
+
+    @Override
     public List<EnterpriseInfo> GetEnterpriseList(int userId, String enterpriseName) {
         return enterpriseDao.getEnterpriseListByEnterpriseName(userId, enterpriseName);
     }
