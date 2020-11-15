@@ -23,11 +23,11 @@
     delete from ht_node_info
     where node_id = #{nodeId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.ht.model.NodeInfo">
-    insert into ht_node_info (node_id, node_name, parent_id, 
+  <insert id="insert" parameterType="com.ht.model.NodeInfo" keyColumn="nodeId" useGeneratedKeys="true" keyProperty="nodeId">
+    insert into ht_node_info ( node_name, parent_id,
       node_type, parent_node_list, create_time, 
       update_time)
-    values (#{nodeId,jdbcType=INTEGER}, #{nodeName,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER}, 
+    values ( #{nodeName,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER},
       #{nodeType,jdbcType=VARCHAR}, #{parentNodeList,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP})
   </insert>

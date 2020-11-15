@@ -25,6 +25,7 @@
     <bean id="userService" class="com.ht.service.impl.UserServiceImpl" />
     <bean id="enterpriseService" class="com.ht.service.impl.EnterpriseServiceImpl" />
     <bean id="projectService" class="com.ht.service.impl.ProjectServiceImpl" />
+    <bean id="nodeinfoService" class="com.ht.service.impl.NodeinfoServiceImp" />
 
     <!--  ================================== import sub-config file  ================================== -->
     <import resource="classpath:spring-mybatis.xml" />
