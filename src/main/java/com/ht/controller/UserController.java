@@ -103,6 +103,17 @@ public class UserController {
         return resp.toJSON();
     }
 
+    @RequestMapping(value = "/changepwd", method = RequestMethod.POST)
+    @ResponseBody
+    public JSONObject changePassword(@RequestBody Map<String, String> map, HttpServletRequest request) {
+
+        String userId = map.get("userId");
+        String oldPassword = map.get("oldPassword");
+        String newPassword = map.get("newPassword");
+        return null;
+    }
+
+
     private ResCode checkVerifyCode(HttpSession session, String verifyCode) {
         Object errorCount = session.getAttribute(SESSION_ERROR_COUNT_KEY);
         if (null != errorCount && Integer.parseInt(errorCount.toString()) >= TRY_COUNTS_BEFORE_VCODE) {
