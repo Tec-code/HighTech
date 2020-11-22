@@ -31,7 +31,7 @@ public class EnterpriseServiceImpl implements IEnterpriseService {
         enterpriseInfo.setCreateTime(now);
         enterpriseInfo.setUpdate(now);
         // todo 需要校验企业名称重复
-        System.out.println(enterpriseDao.checkEnterpriseNameExists(enterpriseInfo.getEnterpriseName()));
+
         if (enterpriseDao.checkEnterpriseNameExists(enterpriseInfo.getEnterpriseName()) != 0) {
             return -1;
         }

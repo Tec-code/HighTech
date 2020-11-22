@@ -39,7 +39,34 @@ CREATE TABLE `ht_user_ext_info`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = gbk;
 
+drop table if exists ht_node_info;
+CREATE TABLE `ht_node_info`
+(
+    `node_id`          int(11)      NOT NULL AUTO_INCREMENT COMMENT '组织节点ID',
+    `node_name`        varchar(128) NOT NULL COMMENT '组织节点名称',
+    `parent_id`        int(11)      NOT NULL COMMENT '父级节点',
+    node_type          varchar(1)   not null comment '节点类型：INNER：内部组织，ORG：机构组织',
+    `parent_node_list` varchar(128) NOT NULL COMMENT '父级节点列表',
+    `create_time`      datetime     NOT NULL COMMENT '创建时间',
+    `update_`          datetime     NOT NULL COMMENT '修改时间',
+    PRIMARY KEY (node_id),
+    key (node_name, node_type),
+    key (parent_id)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = gbk;
 
+
+drop table if exists ht_node_user_rela;
+CREATE TABLE `ht_node_user_rela`
+(
+    `node_id`     int(11)    NOT NULL COMMENT '组织节点ID',
+    `user_id`     int(11)    NOT NULL COMMENT '用户ID',
+    `is_manager`  varchar(1) NOT NULL COMMENT '是否为管理员：Y/N',
+    `create_time` datetime   NOT NULL COMMENT '创建时间',
+    `update_`     datetime   NOT NULL COMMENT '修改时间',
+    PRIMARY KEY (node_id, user_id)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = gbk;
 
 drop table if exists ht_org_info;
 CREATE TABLE `ht_org_info`
@@ -75,38 +102,6 @@ VALUES ('3', '深圳芳草公司', '2020-10-18 17:30:21', '2020-10-18 17:30:24')
 
 
  */
-
-drop table if exists ht_node_info;
-CREATE TABLE `ht_node_info`
-(
-    `node_id`          int(11)      NOT NULL AUTO_INCREMENT COMMENT '组织节点ID',
-    `node_name`        varchar(128) NOT NULL COMMENT '组织节点名称',
-    `parent_id`        int(11)      NOT NULL COMMENT '父级节点',
-    node_type          varchar(6)   not null comment '节点类型：INNER：内部组织，ORG：机构组织',
-    `parent_node_list` varchar(128) NOT NULL COMMENT '父级节点列表',
-    `create_time`      datetime     NOT NULL COMMENT '创建时间',
-    `update_time`          datetime     NOT NULL COMMENT '修改时间',
-    PRIMARY KEY (node_id),
-    key (node_name, node_type),
-    key (parent_id)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = gbk;
-
-insert into ht_node_info(node_name,parent_id,node_type,parent_node_list,create_time,update_time)
-values('系统根节点',0,'SYS','0',now(),now());
-
-drop table if exists ht_node_user_rela;
-CREATE TABLE `ht_node_user_rela`
-(
-    `node_id`     int(11)    NOT NULL COMMENT '组织节点ID',
-    `user_id`     int(11)    NOT NULL COMMENT '用户ID',
-    `is_manager`  varchar(1) NOT NULL COMMENT '是否为管理员：Y/N',
-    `create_time` datetime   NOT NULL COMMENT '创建时间',
-    `update_`     datetime   NOT NULL COMMENT '修改时间',
-    PRIMARY KEY (node_id, user_id)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = gbk;
-
 drop table if exists ht_enterprise_user_rela;
 CREATE TABLE `ht_enterprise_user_rela`
 (
