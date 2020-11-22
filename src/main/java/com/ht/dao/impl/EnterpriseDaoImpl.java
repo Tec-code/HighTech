@@ -16,6 +16,8 @@ public class EnterpriseDaoImpl extends BaseDao implements IEnterpriseDao {
         return mapper.insert(enterpriseInfo);
     }
 
+
+
     @Override
     public List<EnterpriseInfo> getEnterpriseListByEnterpriseName(int userId, String enterpriseName) {
         EnterpriseInfoMapper mapper = sqlSession.getMapper(EnterpriseInfoMapper.class);
