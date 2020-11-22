@@ -48,15 +48,7 @@ public class UserServiceImpl implements IUserService {
         userInfo.setPassword(encodedPassword);
 
         // TODO
-        if(userInfo.getRole() == null){
-            userInfo.setRole(UserRole.ENTERPRISE_ADMIN.getRole());
-        }
-
-        if(userInfo.getUserName() == null){
-            userInfo.setUserName(userInfo.getUserNo());
-        }
-
-
+        userInfo.setRole(UserRole.SYS_ADMIN.getRole());
         userInfo.setStatus(UserStatus.NORMAL.getStatus());
 
         try {
